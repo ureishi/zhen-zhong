@@ -1,0 +1,32 @@
+name: zhen-zhong
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  zhen-zhong:
+    name: zhen-zhong
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
+      
+      - name: set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      
+      - name: work
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pngquant advancecomp
+          ruby zhen-zhong.rb
+      
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v2.5.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: public
