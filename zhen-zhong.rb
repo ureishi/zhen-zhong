@@ -8,8 +8,6 @@ puts 'created: public'
 
 articles = Dir.glob('./article/zz_*.png').sort.reverse.take(4)
 
-exte = ''
-
 4.times{
 	file = articles[_1] ? articles[_1] : './not_found.png'
 	
