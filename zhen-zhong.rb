@@ -11,7 +11,7 @@ articles = Dir.glob('./article/zz_*.png').sort.reverse.take(4)
 4.times{
 	file = articles[_1] ? articles[_1] : './not_found.png'
 	
-	FileUtils.cp file, "./public/zz_#{_1}.png"
+	FileUtils.cp file, "./public/zz_#{_1 + 1}.png"
 }
 
 ### optimize
